@@ -27,6 +27,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="使用AIDL"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/aidl_button"
+        android:id="@+id/content_provider_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="使用Content Provider"/>
     
 
 </android.support.constraint.ConstraintLayout>
