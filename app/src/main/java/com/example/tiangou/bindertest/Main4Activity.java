@@ -112,16 +112,24 @@ public class Main4Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (iBookManager != null) {
-                    try {
-                        List<Book> bookList = iBookManager.getBookList();
+                //避免 客户端ANR
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (iBookManager != null) {
+                            try {
+                                List<Book> bookList = iBookManager.getBookList();
 
-                        Log.d(TAG, "query book list >>> " + bookList.toString());
-                        
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
+                                Log.d(TAG, "query book list >>> " + bookList.toString());
+
+                            } catch (RemoteException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-                }
+                }).start();
+
+
             }
         });
 

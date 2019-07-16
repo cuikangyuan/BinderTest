@@ -120,13 +120,18 @@ public class BookManagerService extends Service {
     }
 
 
-    private void onNewBookArrived(Book newBook) throws RemoteException {
+    private void onNewBookArrived(final Book newBook) throws RemoteException {
 
-        mBookList.add(newBook);
 
-        Log.d(TAG, "onNewBookArrived: notify listeners listeners' size  >>> " + mListeners.getRegisteredCallbackCount());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        int registeredCallbackCount = mListeners.beginBroadcast();
+                mBookList.add(newBook);
+
+                Log.d(TAG, "onNewBookArrived: notify listeners listeners' size  >>> " + mListeners.getRegisteredCallbackCount());
+
+                int registeredCallbackCount = mListeners.beginBroadcast();
 
 //        for (int i = 0; i < mListeners.size(); i++) {
 //
@@ -139,22 +144,31 @@ public class BookManagerService extends Service {
 //        }
 
 
-        for (int i = 0; i < registeredCallbackCount; i++) {
+                for (int i = 0; i < registeredCallbackCount; i++) {
 
-            IOnNewBookArrivedListener listener = mListeners.getBroadcastItem(i);
+                    IOnNewBookArrivedListener listener = mListeners.getBroadcastItem(i);
 
-            Log.d(TAG, "onNewBookArrived: notify listener " + listener);
+                    Log.d(TAG, "onNewBookArrived: notify listener " + listener);
 
-            if (listener != null) {
+                    if (listener != null) {
 
-                listener.onNewBookArrived(newBook);
+                        try {
+                            listener.onNewBookArrived(newBook);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+
+                }
+
+                mListeners.finishBroadcast();
 
             }
+        }).start();
 
 
-        }
-
-        mListeners.finishBroadcast();
 
     }
 
