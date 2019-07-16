@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main4Activity">
+
+    <Button
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="使用AIDL获取数据"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/button1"
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="使用AIDL插入数据"/>
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/button2"
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="注册新书到达Listener"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/button3"
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="删除新书到达Listener"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/button4"
+        app:layout_constraintRight_toLeftOf="@+id/text2"
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新书: "/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        app:layout_constraintLeft_toRightOf="@+id/text1"
+        android:id="@+id/text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        tools:text="dadasdsasadadasds"/>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

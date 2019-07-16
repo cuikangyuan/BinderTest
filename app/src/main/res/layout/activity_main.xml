@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    
+    <Button
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/persist_to_file"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="文件共享"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/persist_to_file"
+        android:id="@+id/messenger_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="使用Messenger"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/messenger_button"
+        android:id="@+id/aidl_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="使用AIDL"/>
+    
+
+</android.support.constraint.ConstraintLayout>
