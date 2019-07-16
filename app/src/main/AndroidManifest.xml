@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 1.定义自定义权限 -->
+    <permission
+        android:name="com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal"/>
+
+    <!-- 3.使用自定义权限-->
+    <uses-permission android:name="com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +19,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main4Activity"></activity>
+
+        <activity android:name=".Main4Activity">
+
+        </activity>
+
         <activity android:name=".Main3Activity" />
-        <activity android:name=".Main2Activity" />
+
+        <activity
+            android:name=".Main2Activity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,10 +45,12 @@
 
         </service>
 
+        <!-- 2.权限限定 -->
         <service
+            android:permission="com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE"
             android:exported="true"
             android:name=".aidlService.BookManagerService"
-            android:process=":BookManagerService" >
+            android:process=":BookManagerService">
 
         </service>
     </application>

@@ -2,6 +2,7 @@ package com.example.tiangou.bindertest.aidlService;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
@@ -116,7 +117,30 @@ public class BookManagerService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return mBinder;
+
+        //权限校验
+
+
+        int checkResult = checkCallingOrSelfPermission("com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE");
+
+        Log.d(TAG, "onBind: checkResult >>> " + checkResult);
+        
+        if (checkResult != PackageManager.PERMISSION_DENIED) {
+
+            return mBinder;
+
+        } else {
+
+            return null;
+
+        }
+
+        /**
+         *
+         * 或者可以在 onTransact 方法校验权限 和  包名要求
+         *
+         * */
+
     }
 
 

@@ -52,12 +52,15 @@ public class Main4Activity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 
+            Log.d(TAG, "onServiceConnected: ComponentName >>> "+ name + " service >>> " + service);
+            
             iBookManager = IBookManager.Stub.asInterface(service);
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
 
+            Log.d(TAG, "onServiceDisconnected: ComponentName >>> " + name);
         }
     };
 
@@ -183,11 +186,14 @@ public class Main4Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                try {
-                    iBookManager.unregisterListener(listener);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
+                if (iBookManager != null) {
+                    try {
+                        iBookManager.unregisterListener(listener);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         });
 
