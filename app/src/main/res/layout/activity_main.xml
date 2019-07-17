@@ -34,6 +34,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="使用Content Provider"/>
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/content_provider_button"
+        android:id="@+id/binder_pool_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="使用Binder Pool"/>
     
 
 </android.support.constraint.ConstraintLayout>

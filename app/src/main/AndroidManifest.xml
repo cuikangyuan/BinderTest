@@ -2,20 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tiangou.bindertest">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- 1.定义自定义权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 1.定义自定义权限 -->
     <permission
         android:name="com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE"
         android:protectionLevel="normal" />
     <permission
         android:name="com.example.tiangou.bindertest.permission.ACCESS_BOOK_PROVIDER"
-        android:protectionLevel="normal" />
-
-
-    <!-- 3.使用自定义权限 -->
+        android:protectionLevel="normal" /> <!-- 3.使用自定义权限 -->
     <uses-permission android:name="com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE" />
-
     <uses-permission android:name="com.example.tiangou.bindertest.permission.ACCESS_BOOK_PROVIDER" />
 
     <application
@@ -25,8 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main5Activity"></activity>
-        <activity android:name=".Main4Activity"></activity>
+        <activity android:name=".Main6Activity"></activity>
+        <activity android:name=".Main5Activity" />
+        <activity android:name=".Main4Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".MainActivity">
@@ -40,27 +35,23 @@
         <service
             android:name=".messengerService.MessengerService"
             android:exported="true"
-            android:process=":MessengerService"></service>
-
-        <!-- 2.权限限定 -->
+            android:process=":MessengerService" /> <!-- 2.权限限定 -->
         <service
             android:name=".aidlService.BookManagerService"
             android:exported="true"
             android:permission="com.example.tiangou.bindertest.permission.ACCESS_BOOK_SERVICE"
-            android:process=":BookManagerService"></service>
-
-
-
-        <!-- authorities 必须唯一 作为唯一标识-->
+            android:process=":BookManagerService" /> <!-- authorities 必须唯一 作为唯一标识 -->
         <provider
-            android:exported="true"
-            android:authorities="com.example.tiangou.bindertest.book.provider"
             android:name=".myContentProvider.BookProvider"
+            android:authorities="com.example.tiangou.bindertest.book.provider"
+            android:exported="true"
             android:permission="com.example.tiangou.bindertest.permission.ACCESS_BOOK_PROVIDER"
-            android:process=":BookProvider"
-            />
+            android:process=":BookProvider" />
 
-
+        <service
+            android:name=".binderPool.BinderPoolService"
+            android:exported="true"
+            android:process=":BinderPoolService" />
     </application>
 
 </manifest>
